@@ -41,12 +41,7 @@ The sample PasswordHash entries are explicit non-authenticating placeholders. Re
 
 The script targets SQL Server and uses GO batch separators; do not run it unchanged in SQLite, MySQL, or PostgreSQL.
 
-CI/CD
 
-The workflow is .github/workflows/part1-validate.yml. It runs on pushes and pull requests and checks that the required Part 1 files exist. Add a genuine screenshot of a successful green GitHub Actions run below before submission:
-
-
-Submission action required: save the screenshot as docs/ci-green-build.png and embed it here, for example with ![Successful GitHub Actions build](docs/ci-green-build.png). No screenshot is included until a run has actually completed in the submitted GitHub repository.
 
 Video presentation
 
