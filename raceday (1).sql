@@ -1,13 +1,5 @@
-/*
-  RaceDay - Part 1 database creation and seed script
-  Target: Microsoft SQL Server / SSMS
-  Model: docs/raceday-erd.mmd and docs/raceday-erd.png
 
-  IMPORTANT: The DEMO-REPLACE values are intentionally non-authenticating
-  password-hash placeholders. In Part 2, create/replace these values using
-  the chosen ASP.NET Core Identity password hasher. Never store plaintext.
-  Run against a clean SQL Server instance with permission to create a database.
-*/
+
 IF DB_ID(N'RaceDay') IS NULL
 BEGIN
     CREATE DATABASE RaceDay;
