@@ -1,0 +1,12 @@
+# Local editor / operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Build and local environment files
+bin/
+obj/
+.env
+.env.*
+!.env.example

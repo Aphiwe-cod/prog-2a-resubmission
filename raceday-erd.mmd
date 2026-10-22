@@ -1,0 +1,75 @@
+erDiagram
+    APP_USERS ||--o{ EVENTS : organises
+    APP_USERS ||--o{ ENROLMENTS : submits
+    EVENTS ||--o{ CATEGORIES : offers
+    CATEGORIES ||--o{ ENROLMENTS : receives
+    ENROLMENTS ||--o| RESULTS : has
+    APP_USERS ||--o{ RESULTS : records
+    EVENTS ||--o{ WEATHER_SNAPSHOTS : caches
+
+    APP_USERS {
+        int UserId PK
+        nvarchar Email UK
+        nvarchar PasswordHash
+        nvarchar FirstName
+        nvarchar LastName
+        nvarchar Phone
+        nvarchar Role
+        datetime2 CreatedAt
+        bit IsActive
+    }
+    EVENTS {
+        int EventId PK
+        int OrganiserId FK
+        nvarchar Name
+        nvarchar EventType
+        nvarchar Description
+        datetime2 EventDate
+        datetime2 RegistrationOpenAt
+        datetime2 RegistrationCloseAt
+        nvarchar Venue
+        nvarchar City
+        nvarchar Province
+        nvarchar Status
+        nvarchar RouteUrl
+        decimal RouteDistanceKm
+        datetime2 CreatedAt
+    }
+    CATEGORIES {
+        int CategoryId PK
+        int EventId FK
+        nvarchar Name
+        decimal DistanceKm
+        tinyint MinimumAge
+        tinyint MaximumAge
+        int Capacity
+        decimal EntryFee
+    }
+    ENROLMENTS {
+        int EnrolmentId PK
+        int ParticipantUserId FK
+        int CategoryId FK
+        datetime2 EnrolledAt
+        nvarchar Status
+        nvarchar BibNumber
+    }
+    RESULTS {
+        int ResultId PK
+        int EnrolmentId FK
+        int Position
+        time FinishTime
+        nvarchar ResultStatus
+        int RecordedByUserId FK
+        datetime2 RecordedAt
+        nvarchar Notes
+    }
+    WEATHER_SNAPSHOTS {
+        int WeatherSnapshotId PK
+        int EventId FK
+        datetime2 ObservedAt
+        decimal TemperatureC
+        nvarchar Conditions
+        decimal WindSpeedKph
+        decimal PrecipitationMm
+        nvarchar Provider
+    }

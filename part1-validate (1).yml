@@ -1,0 +1,30 @@
+name: Part 1 repository validation
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-part1-files:
+    name: Validate Part 1 deliverables
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Verify required files and folders
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -d docs
+          test -f docs/raceday-erd.png
+          test -f docs/raceday-erd.mmd
+          test -f docs/api-endpoint-plan.md
+          test -f docs/raceday.sql
+          test -f README.md
+          test -f .github/workflows/part1-validate.yml
+          echo "All required Part 1 planning files are present."
